@@ -1,0 +1,52 @@
+{% extends "index.html" %}
+{% block content %}
+
+
+<div class="container mt-5">
+    <h4>EmerGency Orders</h4>
+    <table class="table mt-4">
+        <tr>
+            <th>Medicine</th>
+            <th>Rate</th>
+            <th>Quantity</th>
+            <th>Date</th>
+            <th>Delete</th>
+        </tr>
+        {% for i in Eitems %}
+          
+        <tr>
+            <td>{{i.medicine.name}}</td>
+            <td>{{i.price}}</td>
+            <td>{{i.stock}}</td>
+            <td>{{i.date}}</td>
+            <td><a href="{%url 'deleteordercusEmry' i.id %}" class="btn btn-outline-danger">delete</a></td>
+        </tr>
+        {% endfor %}
+
+    </table>
+</div>
+    <div class="container mt-5">
+        <h4>My Orders</h4>
+        <table class="table mt-4">
+            <tr>
+                <th>Medicine</th>
+                <th>Rate</th>
+                <th>Quantity</th>
+                <th>Date</th>
+                <th>Delete</th>
+            </tr>
+            {% for i in orderitems %}
+              
+            <tr>
+                <td>{{i.medicine.name}}</td>
+                <td>{{i.price}}</td>
+                <td>{{i.stock}}</td>
+                <td>{{i.date}}</td>
+                <td><a href="{%url 'deleteordercus' i.id %}" class="btn btn-outline-danger">delete</a></td>
+            </tr>
+            {% endfor %}
+
+        </table>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends "index.html" %}
+{% block content %}
+<style>
+.content{
+    width:70%;
+    margin: auto;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    border: 1px solid;
+    padding: 30px;
+    background-color: whitesmoke;
+}
+</style>
+
+
+<div class="content">
+    <h3>Request For Prescription</h3> <br><br>
+    {% for message in messages %}
+    <h6 style="color:red;text-align:center">{{message}}</h6> 
+     {% endfor %}
+    <form method="post">
+        {% csrf_token %}
+
+        {% for fields in form  %}
+
+        {{fields.label}}: <br>
+        {{fields}} <br><br>
+
+          
+        {% endfor %}
+        <button type="submit" class="btn btn-info">Ask</button>
+
+    </form>
+</div>
+{% for i in mypri  %}
+
+<div class="content mt-3">
+    <h3>Prescription Data</h3> <br><br>
+
+    <h3>Disease: {{i.Disease}}</h3>
+    <h3>Doctor: {{i.doctor}}</h3>
+    <h3>Precription: {{i.Prescription}}</h3>
+      
+
+
+</div>
+{% endfor %}
+
+  
+{% endblock %}

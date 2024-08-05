@@ -1,0 +1,64 @@
+{% extends "index.html" %}
+{% block content %}
+<style>
+    .itemcontainer {
+        width: 80%;
+        height: auto;
+        margin: auto;
+        border: .6px solid black;
+        padding: 30px;
+        background-color: white;
+    }
+    .info{
+        color:red
+    }
+    .success{
+        color: green;
+    }
+</style>
+
+<div class="contanier mt-5">
+    <div class="itemcontainer">
+        <h4>Medicine View</h4>
+        <div class="row">
+            <div class="col-md-8">
+                <table class="table">
+                    <tr>
+                        <td>NAME:</td>
+                        <th>: {{medi.name}}</th>
+                    </tr>
+                    <tr>
+                        <td>Description</td>
+                        <th>: {{medi.description}}</th>
+                    </tr>
+                    <tr>
+                        <td>Manufracturer</td>
+                        <th>: {{medi.manufacturer}}</th>
+                    </tr>
+                    <tr>
+                        <td>Expiry Date</td>
+                        <th>: {{medi.expiry_date}}</th>
+                    </tr>
+                    <tr>
+                        <td>  Date of Manufacture</td>
+                    <th>: {{medi.date_of_manufacture}}</th>
+                </tr>
+                </table>
+                <a href="{%url 'ValidateMedicine' medi.id %}" class="btn btn-info">Validate Medicine</a>
+                {% for message in messages %}
+                <h6 class="{{message.tags}}" style="display:inline;">{{message}}</h6>              
+                {% endfor %}
+            </div>
+            <div class="col-md-4">
+                <img src="{{medi.image.url}}" style="width:80%;height:auto" alt="">
+                <br><br><br>
+                <a href="{%url 'EmergencyBuy' medi.id %}" class="btn btn-danger">Emergency Buy</a>
+                <a href="{%url 'AddToCart' medi.id %}" class="btn btn-warning">Add To Cart</a>
+            </div>
+        </div>
+
+    </div>
+</div>
+<br><br><br><br>
+
+{% endblock %}

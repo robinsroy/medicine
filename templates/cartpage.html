@@ -1,0 +1,71 @@
+{% extends "index.html" %}
+{% block content %}
+<style>
+    .itemscart{
+        padding: 20px;
+        width: 95%;
+        margin: auto;
+        border: 1px solid black;
+    }
+</style>
+  <div class="container mt-5">
+    <div class="datacontainer">
+        <div class="row">
+            <div class="col-md-8">
+                <table class="table">
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Action</th>
+                    </tr>
+                    {% for item in cart  %}
+                      
+                    <tr>
+                        <td>{{item.medicine.name}}</td>
+                        <td>{{item.price}}</td>
+                        <td><a href="{%url 'DecreaseQuantity' item.id %}" class="btn btn-danger btn-sm">-</a> <input style="width:40px;background-color:transparent;border:none;" type="number" value="{{item.stock}}" readonly> <a href="{%url 'IncreaseQuantity' item.id %}" class="btn btn-success btn-sm">+</a> </td>
+                        <td><a href="{%url 'DeleteCartItem' item.id %}" class="btn btn-danger btn-sm">X</a></td>
+                    </tr>
+                    {% endfor %}
+
+                </table>
+
+
+            </div>
+            <div class="col-md-4">
+                <div class="itemscart">
+                    <h4>Checkout Details</h4>
+                    <table class="table table-borderless">
+                        <tr>
+                            <td>Total items</td>
+                            <th>: {{totalcart}}</th>
+                        </tr>
+                        <tr>
+                            <td>Amount</td>
+                            <th>: {{price}}</th>
+                        </tr>
+                        <tr>
+                            <td>GST</td>
+                            <th>: {{gst}}</th>
+                        </tr>
+                        <tr >
+                            <td>Total Amount</td>
+                            <th>: {{total}}</th>
+                        </tr>
+                        <tr style="border-top: 1px solid black;">
+                            <td><h5>Amount To Pay</h5></td>
+                            <th>: {{total}}</th>
+                        </tr>
+                    </table>
+
+                        <a href="{%url 'ProceedCheckout' %}" class="btn btn-warning">Proceed To Check Out</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+  </div>
+  <br><br>
+{% endblock %}

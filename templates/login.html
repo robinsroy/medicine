@@ -1,0 +1,38 @@
+{% extends "index.html" %}
+{% block content %}
+<style>
+    .formcontainer{
+        margin: auto;
+        margin-bottom: 10%;
+        width:60%;
+        height: auto;
+        border: 1px solid black;
+        border-radius: 10px;
+        text-align: center;
+        padding: 20px;
+    }
+    .formcontainer input{
+        width:80%;
+        padding: 6px;
+    }
+</style>
+  <div class="container mt-5">
+    <div class="formcontainer mt-5">
+        <h3>Login</h3>
+        {% for message in messages %}
+       <h6 style="color:red;text-align:center">{{message}}</h6> 
+        {% endfor %}
+        <form method="post">
+{% csrf_token %}
+        <br><br>
+        <input type="text" placeholder="Username" name="uname">
+        <br><br>
+        <input type="password" placeholder="password" name="pswd">
+        <br><br>
+        <button type="submit" class="btn btn-dark btn-lg">Login</button>
+    </form><br>
+    dont have an account take one click <a href="{%url 'SignUp' %}">Here</a>
+    </div>
+
+  </div>
+{% endblock %}

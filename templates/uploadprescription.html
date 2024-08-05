@@ -1,0 +1,33 @@
+{% extends "index.html" %}
+{% block content %}
+
+
+<style>
+    .itemcontainer {
+        width: 80%;
+        height: auto;
+        margin: auto;
+        border: .6px solid black;
+        padding: 30px;
+        background-color: white;
+    }
+    .info{
+        color:red
+    }
+    .success{
+        color: green;
+    }
+</style>
+
+<div class="contanier mt-5 mb-5">
+    <div class="itemcontainer">
+        <h2>Upload Prescription</h2><br><br>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="file" class="form-control" name="pres"><br><br>
+            <button type="submit" class="btn btn-info">Submit</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

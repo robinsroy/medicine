@@ -1,0 +1,45 @@
+{% extends "index.html" %}
+{% block content %}
+<style>
+    .formcontainer{
+        margin: auto;
+        margin-bottom: 10%;
+        width:60%;
+        height: auto;
+        border: 1px solid black;
+        border-radius: 10px;
+        text-align: center;
+        padding: 20px;
+    }
+    .formcontainer input{
+        width:80%;
+        padding: 6px;
+    }
+    ul{
+        list-style: none;
+    }
+</style>
+  <div class="container mt-5">
+    <div class="formcontainer mt-5">
+        <h3>Registration</h3>
+        {% for message in messages %}
+        <h6 style="color:red;text-align:center">{{message}}</h6> 
+         {% endfor %}
+       <h6 style="color:red;text-align:center">{{form.errors}}</h6> 
+        <form method="post">
+{% csrf_token %}
+        <br><br>
+        {% for fields in form %}
+          {{fields.label}}:
+        <br>
+        {{fields}}
+        <br><br>
+        {% endfor %}
+
+        <button type="submit" class="btn btn-dark btn-lg">Register</button>
+    </form><br>
+    Have an Account Click <a href="{%url 'SignIn' %}">Here</a> to Login
+    </div>
+
+  </div>
+{% endblock %}
